@@ -9,6 +9,7 @@ interface ERC20 {
 }
 
 contract Faucet {
+    address public owner;
     uint256 public tokenAmount1;
     uint256 public tokenAmount2;
     uint256 public waitTime;
@@ -16,6 +17,11 @@ contract Faucet {
     ERC20 public tokenInstance1;
     ERC20 public tokenInstance2;    
     mapping(address => uint256) unlockTime;
+
+    modifier onlyOwner() {
+        require(msg.sender==owner, "sender is not a owner");
+        _;
+    }
 
     //Events
     event Withdrawal(address indexed to, uint amount);
@@ -30,6 +36,7 @@ contract Faucet {
         tokenAmount2 = _tokenAmount2;
         waitTime = _waitTime;
         lock = false;
+        owner = msg.sender;
     }
 
     function requestTokens() external {
@@ -63,6 +70,27 @@ contract Faucet {
         return false;
     }
     
+    function setWaitTime (uint256 _waitTime) external onlyOwner{
+        waitTime = _waitTime;
+    }
+    function setToken1Address(address _token1Address) external onlyOwner {
+        require(_token1Address != address(0));
+        tokenInstance1 = ERC20(_token1Address);        
+    } 
+
+    function setToken2Address(address _token2Address) external onlyOwner {
+        require(_token2Address != address(0));        
+        tokenInstance2 = ERC20(_token2Address);
+    } 
+
+    function setTokenAmount1(uint256 _tokenAmount1) external onlyOwner {
+        tokenAmount1 = _tokenAmount1;
+    } 
+
+    function setTokenAmount2(uint256 _tokenAmount2) external onlyOwner {
+        tokenAmount2 = _tokenAmount2;
+    } 
+
     //  Sending Tokens to this faucet fills it up
     receive() external payable {
         emit Deposit(msg.sender, msg.value); 
