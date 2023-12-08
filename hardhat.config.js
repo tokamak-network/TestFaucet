@@ -8,13 +8,17 @@ module.exports = {
     settings: {
       optimizer: {
         enabled: true,
-        runs: 100
+        runs: 1000
       }
     }
   },
   networks: {
     goerli: {
       url: `${process.env.ETH_NODE_URI_goerli}`,
+      accounts: [process.env.PRIVATE_KEY]
+    },
+    sepolia: {
+      url: `${process.env.ETH_NODE_URI_sepolia}`,
       accounts: [process.env.PRIVATE_KEY]
     }
   },
