@@ -49,8 +49,8 @@ contract Faucet {
         unlockTime[msg.sender] = block.timestamp + waitTime;
 
         //check faucet balance
-        require(tokenInstance1.balanceOf(address(this)) > tokenAmount1);
-        require(tokenInstance2.balanceOf(address(this)) > tokenAmount2);
+        require(tokenInstance1.balanceOf(address(this)) >= tokenAmount1);
+        require(tokenInstance2.balanceOf(address(this)) >= tokenAmount2);
 
         //transfer tokens 
         tokenInstance1.transfer(msg.sender, tokenAmount1);

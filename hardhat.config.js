@@ -4,7 +4,7 @@ require("@nomicfoundation/hardhat-toolbox");
 
 module.exports = {
   solidity: {
-    version: "0.8.19",
+    version: "0.8.20",
     settings: {
       optimizer: {
         enabled: true,
@@ -26,6 +26,9 @@ module.exports = {
   etherscan: {
     apiKey: {
       goerli: `${process.env.ETHERSCAN_API_KEY}`
+    },
+    apiKey: {
+      sepolia: `${process.env.ETHERSCAN_API_KEY}`
     }
   },
 

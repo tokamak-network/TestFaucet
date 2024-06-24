@@ -1,9 +1,13 @@
 const { ethers } = require("hardhat");
 module.exports = [
-    "0x68c1F9620aeC7F2913430aD6daC1bb16D8444F00",
-    "0x67F3bE272b1913602B191B3A68F7C238A2D81Bb9",
-    ethers.BigNumber.from("100000000000000000000"),
-    ethers.BigNumber.from("100000000000000000000"),
+    "0xa30fe40285b8f5c0457dbc3b7c8a280373c40044",
+    "0xff3ef745d9878afe5934ff0b130868afddbc58e8",
+    "0x693a591A27750eED2A0e14BC73bB1F313116a1cb",
+    "0x42d3b260c761cD5da022dB56Fe2F89c4A909b04A",
+    ethers.BigNumber.from("1"),
+    ethers.BigNumber.from("1"),
+    ethers.BigNumber.from("1"),
+    ethers.BigNumber.from("1"),
     86400,
   ];
 
